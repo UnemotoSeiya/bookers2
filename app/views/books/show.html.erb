@@ -1,2 +1,23 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'new', book: @booknew %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table">
+        <tbody>
+            <tr>
+              <td>
+                <a href="/users/<%= @book.user_id %>">
+                  <%= image_tag 'default-image', size: "100x100" %><br>
+                  <%= @user.name %>
+                </a>
+              </td>
+              <td><a href="/books/<%= @book.id %>"><%= @book.title %></a></td>
+              <td><%= @book.body %></td>
+              <td><a class="btn btn-sm btn-success" href="/books/<%= @book.id %>/edit">Edit</a></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

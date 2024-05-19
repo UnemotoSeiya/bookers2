@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/2911f289b2.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -23,7 +23,7 @@
           <% if user_signed_in? %>
             <li><%= link_to "Home", root_path, class: 'nav-link text-light' %></li>
             
-            <li><%= link_to "Users", new_user_registration_path, class: 'nav-link text-light' %></li>
+            <li><%= link_to "Users", new_user_session_path, class: 'nav-link text-light' %></li>
             
             <li><%= link_to 'Books', books_path, class: 'nav-link text-light' %></li>
             
