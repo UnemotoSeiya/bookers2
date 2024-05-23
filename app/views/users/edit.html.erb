@@ -1,2 +1,35 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<style>
+.expanded-width {
+  width: 100%;
+  box-sizing: border-box;
+}
+.input{
+  margin-bottom: 10px;
+}
+</style>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>User info</h1>
+      
+      <%= form_with model: @user, authenticity_token: true, multipart: true do |f| %>
+        <div class=input>
+          <label>Name</label>
+          <%= f.text_field :name, class: "expanded-width" %>
+        </div>
+        <div class=input>
+          <label>Image</label>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: "image/*" %>
+        </div>
+        <div class=input>
+          <label>introduction</label>
+          <%= f.text_area :introduction, class: "expanded-width" %>
+        </div>
+        <div class=input>
+          <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

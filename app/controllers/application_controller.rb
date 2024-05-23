@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   end
   
   protected
-
+  
+  def set_flash_message
+    flash[:notice] = "Signed in successfully."
+  end
+  
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
