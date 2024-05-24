@@ -1,9 +1,12 @@
+<div>
+  <%= flash[:notice] %>
+</div>
 <p id="notice"></p>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <%= render 'new', book: @booknew %>
     <div class="col-md-8 offset-md-1">
-      <h2>Books</h2>
+      <h2>Book detail</h2>
       <table class="table">
         <tbody>
             <tr>
@@ -15,8 +18,10 @@
               </td>
               <td><a href="/books/<%= @book.id %>"><%= @book.title %></a></td>
               <td><%= @book.body %></td>
-              <td><a class="btn btn-sm btn-success" href="/books/<%= @book.id %>/edit">Edit</a></td>
-              <td><a class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" href="/books/<%= @book.id %>">Destroy</a></td>
+              <% if @book.user_id == current_user.id %>
+                <td><a class="btn btn-sm btn-success" href="/books/<%= @book.id %>/edit">Edit</a></td>
+                <td><a class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" href="/books/<%= @book.id %>">Destroy</a></td>
+              <% end %>
             </tr>
         </tbody>
       </table>

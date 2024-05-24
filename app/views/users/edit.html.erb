@@ -11,8 +11,17 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>User info</h1>
-      
+      <h2>User info</h2>
+      <div id="error_explanation">
+        <% if @user.errors.any? %>
+        <h3><%= @user.errors.count %> error prohibited this obj from being saved:</h3>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
       <%= form_with model: @user, authenticity_token: true, multipart: true do |f| %>
         <div class=input>
           <label>Name</label>

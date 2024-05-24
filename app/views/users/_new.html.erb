@@ -7,24 +7,45 @@
 </style>
 <div class="col-md-3">
       <h2>User info</h2>
-      <%= image_tag current_user.get_profile_image(100,100) %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>name</th>
-            <th><%= current_user.name %></th>
-          </tr>
-          <tr>
-            <th>introduction</th>
-            <th><%= current_user.introduction %></th>
-          </tr>
-        </tbody>
-      </table>
-      <div class="row">
-        <a class="btn btn-outline-secondary btn-block" href="/users/<%= current_user.id %>/edit">
-          <i class="fa-solid fa-user-gear"></i>
-        </a>
-      </div>
+      <% if @user.present? %>
+        <%= image_tag @user.get_profile_image(100,100) %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>name</th>
+              <th><%= @user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= @user.introduction %></th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row">
+          <a class="btn btn-outline-secondary btn-block" href="/users/<%= @user.id %>/edit">
+            <i class="fa-solid fa-user-gear"></i>
+          </a>
+        </div>
+      <% else %>
+        <%= image_tag current_user.get_profile_image(100,100) %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>name</th>
+              <th><%= current_user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= current_user.introduction %></th>
+            </tr>
+         </tbody>
+        </table>
+        <div class="row">
+          <a class="btn btn-outline-secondary btn-block" href="/users/<%= current_user.id %>/edit">
+            <i class="fa-solid fa-user-gear"></i>
+          </a>
+        </div>
+      <% end %>
       <h2 class="mt-3">New book</h2>
       <%= form_with model: book do |f| %>
         <label>Title</label>
